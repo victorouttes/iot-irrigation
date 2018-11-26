@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+{% endblock %}
+
+{% block main %}
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-success">
+                <div class="card-body pb-0">
+                    <div class="text-value text-right" style="height:60px;">1.000</div>
+                    <div style="height:60px;"><h3>Registros coletados</h3></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-primary">
+                <div class="card-body pb-0">
+                    <div class="text-value text-right" style="height:60px;"><h2>500</h2></div>
+                    <div style="height:60px;"><h3>Umidade atual</h3></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-warning">
+                <div class="card-body pb-0">
+                    <div class="text-value text-right" style="height:60px;"><h2>345</h2></div>
+                    <div style="height:60px;"><h3>Luminosidade atual</h3></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-danger">
+                <div class="card-body pb-0">
+                    <div class="text-value text-right" style="height:60px;"><h2>32</h2></div>
+                    <div style="height:60px;"><h3>Temperatura atual</h3></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

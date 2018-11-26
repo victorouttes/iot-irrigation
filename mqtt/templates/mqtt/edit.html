@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Configuração MQTT</li>
+</ol>
+{% endblock %}
+
+{% block main %}
+<div class="animated fadeIn">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+</div>
+{% endblock %}
