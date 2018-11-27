@@ -59,12 +59,16 @@
             <ul class="nav">
                 <li class="nav-title">Menu</li>
                 <li class="nav-item">
-                    <a class="nav-link" href="colors.html">
-                        <i class="nav-icon icon-chart"></i> Gráfico</a>
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="nav-icon cui-dashboard"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'config' %}">
-                        <i class="nav-icon icon-wrench"></i> Configurar MQTT</a>
+                    <a class="nav-link" href="colors.html">
+                        <i class="nav-icon cui-chart"></i> Gráficos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'data' %}">
+                        <i class="nav-icon cui-cloud"></i> Dados</a>
                 </li>
             </ul>
         </nav>
