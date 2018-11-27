@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Gráficos</li>
+</ol>
+{% endblock %}
+
+{% block main %}
+<div class="animated fadeIn">
+    <canvas id="productsChart" width="80" height="30"></canvas>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+
+<script>
+    var ctx = document.getElementById("productsChart");
+    var names = JSON.parse('{{ dates|safe }}');
+    var humidities = JSON.parse('{{ humidities|safe }}');
+    var temperatures = JSON.parse('{{ temperatures|safe }}');
+    var sunlights = JSON.parse('{{ sunlights|safe }}');
+    var productsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: names,
+            datasets: [{
+                label: 'Umidade',
+                data: humidities,
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }, {
+                label: 'Temperatura',
+                data: temperatures,
+                backgroundColor: [
+                    'rgba(247, 98, 44, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(247, 98, 44, 1)'
+                ],
+                borderWidth: 1
+            }, {
+                label: 'Luminosidade',
+                data: sunlights,
+                backgroundColor: [
+                    'rgba(243, 247, 44, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(243, 247, 44, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+{% endblock %}

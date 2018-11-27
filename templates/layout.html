@@ -63,7 +63,7 @@
                         <i class="nav-icon cui-dashboard"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="colors.html">
+                    <a class="nav-link" href="{% url 'chart' %}">
                         <i class="nav-icon cui-chart"></i> Gráficos</a>
                 </li>
                 <li class="nav-item">
@@ -101,9 +101,7 @@
 <script src="https://cdn.jsdelivr.net/npm/pace-progress@1.0.2/pace.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js"></script>
 <script src="{% static 'js/coreui.min.js' %}"></script>
-<!-- Plugins and scripts required by this view-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>-->
 <script src="{% static 'js/custom-tooltips.min.js' %}"></script>
-<!--<script src="{% static 'js/main.js' %}"></script>-->
+{% block scripts %}{% endblock %}
 </body>
 </html>

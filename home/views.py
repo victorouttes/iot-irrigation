@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, InvalidPage
+import json
 from .models import Sensor
 
 
@@ -28,3 +29,20 @@ def list_all(request):
 
     data = {'alldata': alldata, 'total': total}
     return render(request, 'home/data.html', data)
+
+
+@login_required
+def chart(request):
+    alldata = Sensor.objects.order_by('-date')[:50][::-1]
+    dates = [x.date.strftime('%d/%m/%Y %H:%M:%S') for x in alldata]
+    humidities = [float(x.humidity) for x in alldata]
+    temperatures = [float(x.temperature) for x in alldata]
+    sunlights = [float(x.sunlight) for x in alldata]
+    data = {
+        'dates': json.dumps(dates),
+        'humidities': json.dumps(humidities),
+        'temperatures': json.dumps(temperatures),
+        'sunlights': json.dumps(sunlights)
+    }
+    return render(request, 'home/chart.html', data)
+
