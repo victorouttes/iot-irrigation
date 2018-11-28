@@ -6,9 +6,11 @@ RECONNECT_DELAY_SECS = 2
 
 
 def on_connect(client, userdata, flags, rc):
-    print('Connected!')
-    # client.unsubscribe(TOPICS)
-    client.subscribe(TOPICS)
+    if userdata == 0:
+        print('First connection!')
+        client.subscribe(TOPICS, qos=1)
+    else:
+        print('Reconnection!')
 
 
 def on_message(client, userdata, msg):
@@ -30,19 +32,18 @@ def on_subscribe(mosq, obj, mid, granted_qos):
 
 
 def on_disconnect(client, userdata, rc):
-    client.loop_stop(force=False)
-    if rc != 0:
-        print("Unexpected disconnection: rc:" + str(rc))
-    else:
-        print("Disconnected: rc:" + str(rc))
+    client.user_data_set(userdata + 1)
+    if userdata == 0:
+        client.reconnect()
 
 
 def run():
-    client = mqttclient.Client()
+    client = mqttclient.Client(client_id='server-iot', clean_session=False)
     client.on_connect = on_connect
     client.on_message = on_message
     client.on_subscribe = on_subscribe
     client.on_disconnect = on_disconnect
+    client.user_data_set(0)
     client.tls_set(certfile=None, keyfile=None, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2,
                    ciphers=None)
     client.username_pw_set('unibratec', password='unibratec')

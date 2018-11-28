@@ -10,9 +10,12 @@ ITEMS_PER_PAGE = 10
 
 @login_required
 def home(request):
-    sensor = Sensor.objects.latest('id')
-    count = Sensor.objects.all().count()
-    data = {'sensor': sensor, 'count': count}
+    if Sensor.objects.all().exists():
+        sensor = Sensor.objects.latest('id')
+        count = Sensor.objects.all().count()
+        data = {'sensor': sensor, 'count': count}
+    else:
+        data = {'sensor': None, 'count': 0}
     return render(request, 'home/home.html', data)
 
 
