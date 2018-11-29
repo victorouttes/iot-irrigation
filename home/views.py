@@ -36,7 +36,7 @@ def list_all(request):
 
 @login_required
 def chart(request):
-    alldata = Sensor.objects.order_by('-date')[:50][::-1]
+    alldata = Sensor.objects.order_by('-date')[::-1]
     dates = [x.date.strftime('%d/%m/%Y %H:%M:%S') for x in alldata]
     humidities = [float(x.humidity) for x in alldata]
     temperatures = [float(x.temperature) for x in alldata]
