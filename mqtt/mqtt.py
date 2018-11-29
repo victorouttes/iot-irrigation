@@ -38,14 +38,14 @@ def on_disconnect(client, userdata, rc):
 
 
 def run():
-    client = mqttclient.Client(client_id='server-iot', clean_session=False)
+    client = mqttclient.Client(client_id='server-iot-home', clean_session=False)
     client.on_connect = on_connect
     client.on_message = on_message
     client.on_subscribe = on_subscribe
     client.on_disconnect = on_disconnect
     client.user_data_set(0)
-    client.tls_set(certfile=None, keyfile=None, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2,
-                   ciphers=None)
+    #client.tls_set(certfile=None, keyfile=None, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2,
+    #               ciphers=None)
     client.username_pw_set('unibratec', password='unibratec')
-    client.connect('mqtt.victorouttes.com.br', 8883, 60)
+    client.connect('mqtt.victorouttes.com.br', 1883, 60)
     client.loop_start()
