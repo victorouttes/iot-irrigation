@@ -28,6 +28,7 @@
             labels: names,
             datasets: [{
                 label: 'Umidade',
+                fill: false,
                 data: humidities,
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.2)'
@@ -35,9 +36,10 @@
                 borderColor: [
                     'rgba(75, 192, 192, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 3
             }, {
                 label: 'Temperatura',
+                fill: false,
                 data: temperatures,
                 backgroundColor: [
                     'rgba(247, 98, 44, 0.2)'
@@ -45,9 +47,10 @@
                 borderColor: [
                     'rgba(247, 98, 44, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 3
             }, {
                 label: 'Luminosidade',
+                fill: false,
                 data: sunlights,
                 backgroundColor: [
                     'rgba(243, 247, 44, 0.2)'
@@ -55,10 +58,15 @@
                 borderColor: [
                     'rgba(243, 247, 44, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 3
             }]
         },
         options: {
+            elements: {
+                point: {
+                    radius: 0
+                }
+            },
             scales: {
                 yAxes: [{
                     ticks: {
