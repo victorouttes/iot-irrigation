@@ -25,4 +25,5 @@ urlpatterns = [
     path('', home_views.home, name='home'),
     path('data/', home_views.list_all, name='data'),
     path('chart/', home_views.chart, name='chart'),
+    path('irrigation/', home_views.irrigation, name='irrigation'),
 ]

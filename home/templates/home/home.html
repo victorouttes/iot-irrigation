@@ -46,5 +46,20 @@
         </div>
 
     </div>
+
+    <form method="post" action="{% url 'irrigation' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="checkbox" {% if "ON" == status %} checked {% endif %}
+                    name="check_irrigation" onChange="this.form.submit()"
+                    style="size: 50px;" data-toggle="toggle"
+                    data-width="300" data-height="75"
+                    data-onstyle="success" data-offstyle="danger"
+                    data-on="<i class='fa fa-play'></i> IRRIGAÇÃO LIGADA"
+                    data-off="<i class='fa fa-pause'></i> IRRIGAÇÃO DESLIGADA">
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}
