@@ -5,7 +5,7 @@ Julio Sales
 Victor Outtes
 
 ## Projeto Django
-As configurações de ambiente de produção foram omitidas, mantendo o banco de dados em SQLite.
+As configurações de ambiente de produção foram omitidas, mantendo o banco de dados em SQLite. Para colocar em produção, você pode seguir [este exemplo](https://github.com/victorouttes/iot-irrigation/wiki).
 
 ## Códigos dos MCUs
 Na pasta "MCU".
