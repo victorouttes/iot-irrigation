@@ -104,7 +104,7 @@ void mqtt_callback(char* topic, byte* payload, unsigned int length) {
       }
     }
   }
-  Serial.println("Tópico => " + String(topic) + " | Valor => " + String(message));
+  Serial.println("TÃ³pico => " + String(topic) + " | Valor => " + String(message));
 }
 
 void reconnectMQTT() {
@@ -114,6 +114,7 @@ void reconnectMQTT() {
     if (MQTT.connect("ESP8266-IRRIGADOR", BROKER_USER, BROKER_PASS)) {
       Serial.println("Conectado");
       MQTT.subscribe(BROKER_TOPIC_IRRIGATION, BROKER_QOS);
+      MQTT.subscribe(BROKER_TOPIC, BROKER_QOS);
 
     } else {
       Serial.println("Falha ao Reconectar");
